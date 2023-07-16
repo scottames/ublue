@@ -52,16 +52,22 @@ rpm:
   # performed via rpm-ostree during the image build, and will be pre-installed
   # at the "system level" in the final image.
   install:
-    # Needed for yafti (the first boot installer). Remove if you're not using yafti.
-    - python3-pip
+    - 1password
+    - 1password-cli
+    - fish
+    - google-droid-sans-fonts
+    - google-noto-fonts-common
+    - google-roboto-fonts
+    - langpacks-en
     # GNOME's GTK4 theme, Libadwaita. Already included in Silverblue, but not
     # other spins. You can remove if you aren't using yafti, but many native
     # apps and binaries require it, so it's a good idea to always include it
     # if you ever download or compile any custom software on your machine.
     - libadwaita
-    - fish
-    - 1password
-    - 1password-cli
+    - mozilla-fira-fonts-common
+    - mscore-fonts-all
+    - netcat
+    - python3-pip # needed by Yafti
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
   remove:
@@ -84,3 +90,10 @@ firstboot:
   flatpaks:
     - io.github.celluloid_player.Celluloid
     - org.kde.krita
+    - io.wavebox.Wavebox
+    - org.flameshot.Flameshot
+    - org.gimp.GIMP
+    - com.google.Chrome
+    - md.obsidian.Obsidian
+    - org.wezfurlong.wezterm
+    - us.zoom.Zoom
