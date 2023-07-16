@@ -113,5 +113,10 @@ firstboot:
     - org.flameshot.Flameshot
     - org.gimp.GIMP
     - org.kde.krita
+    - io.wavebox.Wavebox
+    - org.flameshot.Flameshot
+    - org.gimp.GIMP
+    - com.google.Chrome
+    - md.obsidian.Obsidian
     - org.wezfurlong.wezterm
     - us.zoom.Zoom
