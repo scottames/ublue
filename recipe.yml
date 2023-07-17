@@ -71,6 +71,9 @@ rpm:
     - mscore-fonts-all
     - netcat
     - python3-pip # needed by Yafti
+    - yubico-piv-tool-devel
+    - yubikey-manager
+    - yubikey-manager-qt
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
   remove:
