@@ -45,6 +45,7 @@ rpm:
   # A list of .repo files that aren't in the COPR, added by scripts/pre/proprietaryrepos.sh
   repo-files:
     - https://raw.githubusercontent.com/scottames/ublue/live/repos/1password.repo
+    - https://repo.vivaldi.com/stable/vivaldi-fedora.repo
   # These RPMs will be installed from your enabled repositories (Fedora's own
   # repos, extra "repos" you've added, etc). The installation is automatically
   # performed via rpm-ostree during the image build, and will be pre-installed
@@ -72,6 +73,13 @@ rpm:
     - yubico-piv-tool-devel
     - yubikey-manager
     - yubikey-manager-qt
+    - vivaldi-stable
+  # Fixes packages that install to /opt by symlinking:
+  #   ../../usr/lib/opt/[name here]
+  #   in /opt/[name here]
+  optpackages:
+    - 1Password
+    - vivaldi
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
   remove:
