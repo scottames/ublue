@@ -4,7 +4,7 @@
 
 This is [scottames]()' repository for creating Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) designed to be customized however you want. GitHub will build your image for you, and then host it for you on [ghcr.io](https://github.com/features/packages).
 
-For more info, check out the [uBlue](https://ublue.it/)
+For more info, check out the [uBlue](https://universal-blue.org/)
 
 ## Verification
 
@@ -12,14 +12,48 @@ These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosi
 
     cosign verify --key cosign.pub ghcr.io/scottames/ublue
 
-If you're forking this repo, the uBlue website has [instructions](https://ublue.it/making-your-own/) for setting up signing properly.
+If you're forking this repo, the uBlue website has [instructions](https://universal-blue.org/tinker/make-your-own/) for setting up signing properly.
+
+## Installation
+> **Warning**
+> This is an experimental feature and should not be used in production, try it in a VM for a while!
+
+To rebase an existing Silverblue/Kinoite installation to the latest build:
+
+```
+sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/scottames/ublue:latest
+```
+
+- First rebase to the image unsigned, to get the proper signing keys and policies installed:
+
+  ```
+  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/scottames/ublue:latest
+  ```
+
+- Reboot to complete the rebase:
+
+  ```
+  systemctl reboot
+  ```
+
+- Then rebase to the signed image, like so:
+
+  ```
+  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/scottames/ublue:latest
+  ```
+
+- Reboot again to complete the installation
+
+  ```
+  systemctl reboot
+  ```
 
 ## Staying Up to Date with Upstream
 
 If necessary, set upstream with ublue-os
 
 ```shell
-git remote set-url upstream https://github.com/ublue-os/startingpoint
+git remote add upstream https://github.com/ublue-os/startingpoint.git
 ```
 
 Fetch & rebase
