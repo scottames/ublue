@@ -102,12 +102,13 @@ firstboot:
   # the "just setup-flatpaks" command from our "custom.just" template file.
   # This is just an example selection:
   flatpaks:
+    - com.google.Chrome
+    - com.raggesilver.BlackBox
     - io.github.celluloid_player.Celluloid
-    - org.kde.krita
     - io.wavebox.Wavebox
+    - md.obsidian.Obsidian
     - org.flameshot.Flameshot
     - org.gimp.GIMP
-    - com.google.Chrome
-    - md.obsidian.Obsidian
+    - org.kde.krita
     - org.wezfurlong.wezterm
     - us.zoom.Zoom
