@@ -1,5 +1,19 @@
 !include /usr/share/ublue-os/just/bling.just
 
+# assemble and replace distroboxes from ${HOME}/.config/distrobox/assemble.ini
+# https://github.com/89luca89/distrobox/blob/main/docs/usage/distrobox-assemble.md
+assemble:
+  echo 'Assembling and replacing distroboxes from ${HOME}/.config/distrobox/assemble.ini...'
+  distrobox assemble create --replace --file "${HOME}/.config/distrobox/assemble.ini"
+
+# set fish as default shell
+fish:
+  sudo lchsh $USER /usr/bin/fish
+
+# enable user podman socket
+podman-socket:
+  systemctl --user enable --now podman.socket
+
 # install all flatpaks defined in recipe.yml
 setup-flatpaks:
   #!/usr/bin/env bash
@@ -10,4 +24,6 @@ setup-flatpaks:
       flatpak install --user --noninteractive flathub $pkg; \
   done
 
-# Include some of your custom scripts here! 
+# run yafti
+yafti:
+  yafti /etc/yafti.yml

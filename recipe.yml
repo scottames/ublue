@@ -66,9 +66,11 @@ rpm:
     # https://github.com/oae/gnome-shell-pano
     - libgda
     - libgda-sqlite
+    - lm_sensors # required by freon gnome-ext
     - mozilla-fira-fonts-common
     - mscore-fonts-all
     - netcat
+    - pulseaudio-utils
     - python3-pip # needed by Yafti
     - yubico-piv-tool-devel
     - yubikey-manager
@@ -102,6 +104,7 @@ firstboot:
   # the "just setup-flatpaks" command from our "custom.just" template file.
   # This is just an example selection:
   flatpaks:
+    - com.github.marhkb.Pods
     - com.google.Chrome
     - com.raggesilver.BlackBox
     - io.github.celluloid_player.Celluloid
