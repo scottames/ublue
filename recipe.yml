@@ -1,22 +1,5 @@
-# This file can only be edited inside the uBlue image's git repository.
-
-# The image will be at "ghcr.io/yourusername/name".
-name: ublue
-# The native container image to build on top of.
-# Warning: Non-uBlue images might not work properly, due to missing components.
-base-image: ghcr.io/ublue-os/silverblue-main
-# What Fedora version to use. Use an explicit version or `latest`.
-# If you use `latest`, you will be automatically updated to the next major
-# Fedora version, assuming the image you're using as your base container
-# builds with the tag (all uBlue images do this).
-fedora-version: 38
-# This description will be visible in the container metadata.
+base_image_registry: ghcr.io/ublue-os
 description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
-# These scripts will be executed during the container build.
-# Place scripts in the "scripts/" dir and put the corresponding filenames here.
-# Any files that aren't listed here won't be executed automatically, which
-# means that you can place "helper" or "library" scripts in the folder too.
-# You can use "autorun.sh" if you want an automatic runner.
 scripts:
   # "Pre" scripts run very early in the build, immediately after your custom
   # repos have been imported (so that you can access those repos if necessary).

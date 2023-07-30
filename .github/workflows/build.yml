@@ -1,13 +1,7 @@
 name: build-ublue
 on:
-  # Build *every* branch at 10:20pm UTC every day (1 hr delay after "nvidia" builds),
-  # regardless of the branch names. (Not just "live, template and main" branches.)
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
   schedule:
     - cron: "20 22 * * *"
-  # Build automatically after pushing commits or tags to the "live", "template"
-  # or "main" branches, except when the commit only affects "documentation" text files.
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
   push:
     branches:
       - live
@@ -16,26 +10,14 @@ on:
     paths-ignore:
       - "**.md"
       - "**.txt"
-  # Build pull requests whenever they are opened or updated, to make sure they
-  # work. The build won't be deployed, since we filter out PRs in the deployment
-  # stage. Note that submitted PRs run the workflow of the *fork's* own primary
-  # branch, using the fork's own secrets/environment. Please be sure to sync
-  # your primary branch with upstream's latest workflow before submitting PRs!
-  # For pull requests, we build *any* branch regardless of name, to allow "build
-  # checks" to succeed for typical PR branch names such as "fix-something".
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
   pull_request:
-  # Build when manually triggering this workflow for a branch. This allows you
-  # to build any branch, even if it's not listed in the automated triggers above.
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
   workflow_dispatch:
 env:
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  IMAGE_REGISTRY_OWNER: ${{ github.repository_owner }}
 jobs:
   push-ghcr:
-    # Only deploys the branch named "live". Ignores all other branches, to allow
-    # having "development" branches without interfering with GHCR image uploads.
-    name: Build and push image
+    name: Build & Push
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -44,6 +26,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        image_variant: [silverblue]
+        image_flavor: [main, nvidia]
+        base_name: [ublue]
+        major_version: [38]
         recipe:
           - recipe.yml
     steps:
@@ -54,10 +40,20 @@ jobs:
         uses: mikefarah/yq@v4.34.2
       - name: Gather image data from recipe
         run: |
-          echo "IMAGE_NAME=$(yq '.name' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          if [[ "${{ matrix.image_flavor }}" == "main" ]]; then
+              echo "IMAGE_NAME=${{ matrix.base_name }}" >> $GITHUB_ENV
+          elif [[ "${{ matrix.image_variant }}" == "silverblue" ]]; then
+              echo "IMAGE_NAME=${{ format('{0}-{1}', matrix.base_name, matrix.image_flavor) }}" >> $GITHUB_ENV
+          elif [[ "${{ matrix.image_flavor }}" == "main" ]]; then
+              echo "IMAGE_NAME=${{ format('{0}-{1}', matrix.base_name, matrix.image_variant) }}" >> $GITHUB_ENV
+          else
+              echo "IMAGE_NAME=${{ format('{0}-{1}-{2}', matrix.base_name, matrix.image_variant, matrix.image_flavor) }}" >> $GITHUB_ENV
+          fi
+
+          echo "BASE_IMAGE_REGISTRY=$(yq '.base_image_registry' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          echo "RECIPE=${{ matrix.recipe }}" >> $GITHUB_ENV
           echo "IMAGE_DESCRIPTION=$(yq '.description' ./${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "FEDORA_MAJOR_VERSION=$(yq '.fedora-version' ./${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "BASE_IMAGE_URL=$(yq '.base-image' ./${{ matrix.recipe }})" >> $GITHUB_ENV
+          echo "FEDORA_MAJOR_VERSION=${{ matrix.major_version }}" >> $GITHUB_ENV
       - name: Generate tags
         id: generate-tags
         shell: bash
@@ -94,21 +90,8 @@ jobs:
       - name: Get current version
         id: labels
         run: |
-          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_URL }}:${{ env.FEDORA_MAJOR_VERSION }} | jq -r '.Labels["org.opencontainers.image.version"]')
+          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_REGISTRY }}/${{ matrix.image_variant }}-${{ matrix.image_flavor }}:${{ matrix.major_version }} | jq -r '.Labels["org.opencontainers.image.version"]')
           echo "VERSION=$ver" >> $GITHUB_OUTPUT
-      # Build metadata
-      - name: Image Metadata
-        uses: docker/metadata-action@v4
-        id: meta
-        with:
-          images: |
-            ${{ env.IMAGE_NAME }}
-          labels: |
-            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
-            org.opencontainers.image.version=${{ steps.labels.outputs.VERSION }}
-            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/startingpoint/main/README.md
-            io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
       - name: Lowercase Registry
@@ -121,21 +104,36 @@ jobs:
         uses: ASzc/change-string-case-action@v5
         with:
           string: ${{ env.IMAGE_NAME }}
-      # Build image using Buildah action
+      - name: Image Metadata
+        uses: docker/metadata-action@v4
+        id: meta
+        with:
+          images: |
+            ${{ steps.image_case.outputs.lowercase }}
+          labels: |
+            org.opencontainers.image.title=${{ steps.image_case.outputs.lowercase }}
+            org.opencontainers.image.version=${{ steps.labels.outputs.VERSION }}
+            org.opencontainers.image.description=${{ env.IMAGE_DESCRIPTION }}
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/scottames/ublue/main/README.md
+            io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4
       - name: Build Image
         id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
             ./Containerfile
-          image: ${{ env.IMAGE_NAME }}
+          image: ${{ steps.image_case.outputs.lowercase }}
           tags: |
             ${{ steps.generate-tags.outputs.alias_tags }}
           build-args: |
+            IMAGE_VARIANT=${{ matrix.image_variant }}
+            IMAGE_FLAVOR=${{ matrix.image_flavor }}
+            IMAGE_NAME=${{ steps.image_case.outputs.lowercase }}
             FEDORA_MAJOR_VERSION=${{ env.FEDORA_MAJOR_VERSION }}
-            BASE_IMAGE_URL=${{ env.BASE_IMAGE_URL }}
+            BASE_IMAGE_REGISTRY=${{ env.BASE_IMAGE_REGISTRY }}
             RECIPE=${{ matrix.recipe }}
             IMAGE_REGISTRY=${{ steps.registry_case.outputs.lowercase }}
+            IMAGE_REGISTRY_OWNER=${{ env.IMAGE_REGISTRY_OWNER }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
       - name: Push To GHCR

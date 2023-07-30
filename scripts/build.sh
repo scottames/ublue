@@ -110,29 +110,28 @@ echo "Setup container signing in policy.json and cosign.yaml"
 echo "Registry to write: $IMAGE_REGISTRY"
 
 # Copy Name
-NAME=$(get_yaml_string '.name')
-cp /usr/share/ublue-os/cosign.pub /usr/etc/pki/containers/"$NAME".pub
+cp "/usr/share/ublue-os/$IMAGE_REGISTRY_OWNER.pub" /usr/etc/pki/containers/
 
 # Work around the fact that jq doesn't have an "inplace" option
 FILE=/usr/etc/containers/policy.json
 TMP=/tmp/policy.json
 
-jq '.transports.docker |= 
+jq '.transports.docker |=
     {"'"$IMAGE_REGISTRY"'": [
             {
                 "type": "sigstoreSigned",
-                "keyPath": "/usr/etc/pki/containers/'"$NAME"'.pub",
+                "keyPath": "/usr/etc/pki/containers/'"$IMAGE_REGISTRY_OWNER"'.pub",
                 "signedIdentity": {
                     "type": "matchRepository"
                 }
             }
         ]
     }
-+ .' $FILE > $TMP
++ .' $FILE >$TMP
 mv -f $TMP $FILE
 
-cp /usr/etc/containers/registries.d/ublue-os.yaml /usr/etc/containers/registries.d/"$NAME".yaml
-sed -i "s ghcr.io/ublue-os $IMAGE_REGISTRY g" /usr/etc/containers/registries.d/"$NAME".yaml
+cp /usr/etc/containers/registries.d/ublue-os.yaml /usr/etc/containers/registries.d/"$IMAGE_REGISTRY_OWNER".yaml
+sed -i "s ghcr.io/ublue-os $IMAGE_REGISTRY g" /usr/etc/containers/registries.d/"$IMAGE_REGISTRY_OWNER".yaml
 
 # Run "post" scripts.
 run_scripts "post"
