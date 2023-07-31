@@ -2,27 +2,22 @@
 
 [![build-ublue](https://github.com/scottames/ublue/actions/workflows/build.yml/badge.svg)](https://github.com/scottames/ublue/actions/workflows/build.yml)
 
-This is [scottames]()' repository for creating Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) designed to be customized however you want. GitHub will build your image for you, and then host it for you on [ghcr.io](https://github.com/features/packages).
+[scottames]()' custom Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) powered by [Universal Blue](https://universal-blue.org/).
 
-For more info, check out the [uBlue](https://universal-blue.org/)
+Multiple images are built, ublue being the default Silverblue. See [packages](https://github.com/scottames?tab=packages&repo_name=ublue) for image details.
 
 ## Verification
 
-These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:
+Images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). To verify images, grab [the pub key](cosign.pub) and verify:
 
     cosign verify --key cosign.pub ghcr.io/scottames/ublue
 
 If you're forking this repo, the uBlue website has [instructions](https://universal-blue.org/tinker/make-your-own/) for setting up signing properly.
 
 ## Installation
+
 > **Warning**
-> This is an experimental feature and should not be used in production, try it in a VM for a while!
-
-To rebase an existing Silverblue/Kinoite installation to the latest build:
-
-```
-sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/scottames/ublue:latest
-```
+> This is an experimental feature and should not be used in production!
 
 - First rebase to the image unsigned, to get the proper signing keys and policies installed:
 
@@ -50,6 +45,7 @@ sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/scottames/ublue:latest
 
 ## Staying Up to Date with Upstream
 
+- Last tracking [github.com/ublue-os/startingpoint](https://github.com/ublue-os/startingpoint) at [a700132](https://github.com/ublue-os/startingpoint/commit/a70013277e209a042d546d5a43ea3d39e26b1a08)
 If necessary, set upstream with ublue-os
 
 ```shell
