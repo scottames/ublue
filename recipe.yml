@@ -43,6 +43,7 @@ rpm:
     - yubikey-manager-qt
     - vivaldi-stable
     - wl-clipboard
+    - xclip
   # Fixes packages that install to /opt by symlinking:
   #   ../../usr/lib/opt/[name here]
   #   in /opt/[name here]

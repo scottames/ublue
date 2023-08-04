@@ -16,11 +16,11 @@ get_yaml_string() {
 FEDORA_VERSION="$(cat /usr/lib/os-release | grep -Po '(?<=VERSION_ID=)\d+')"
 
 # Read configuration variables.
-BASE_IMAGE="$(get_yaml_string '.base-image')"
+BASE_IMAGE_REGISTRY="$(get_yaml_string '.base_image_registry')"
 YAFTI_ENABLED="$(get_yaml_string '.firstboot.yafti')"
 
 # Welcome.
-echo "Building custom Fedora ${FEDORA_VERSION} from image: \"${BASE_IMAGE}\"."
+echo "Building custom Fedora ${FEDORA_VERSION} from image: \"${BASE_IMAGE_REGISTRY}\"."
 
 # Add custom repos.
 get_yaml_array repos '.rpm.repos[]'
