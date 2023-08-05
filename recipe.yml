@@ -2,12 +2,9 @@ base_image_registry: ghcr.io/ublue-os
 description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
 scripts:
   pre:
-    # Automatically runs script files within "scripts/pre/".
-    - autorun.sh
+    - autorun.sh # Automatically runs script files within "scripts/pre/".
   post:
-    # Automatically runs script files within "scripts/post/".
-    - autorun.sh
-    - dconf-update.sh
+    - autorun.sh # Automatically runs script files within "scripts/post/".
 rpm:
   repos:
   # Tip: Use `%FEDORA_VERSION%` instead of static Fedora version numbers,
