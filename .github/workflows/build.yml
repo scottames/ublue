@@ -10,6 +10,9 @@ on:
     paths-ignore:
       - "**.md"
       - "**.txt"
+      - ".pre-commit-config.yaml"
+      - "boot_menu.yaml"
+      - ".github/**"
   pull_request:
   workflow_dispatch:
 env:
