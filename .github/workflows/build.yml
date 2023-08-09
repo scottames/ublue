@@ -57,13 +57,18 @@ jobs:
           echo "RECIPE=${{ matrix.recipe }}" >> $GITHUB_ENV
           echo "IMAGE_DESCRIPTION=$(yq '.description' ./${{ matrix.recipe }})" >> $GITHUB_ENV
           echo "FEDORA_MAJOR_VERSION=${{ matrix.major_version }}" >> $GITHUB_ENV
+      - name: Get current version
+        id: labels
+        run: |
+          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_URL }}:${{ env.FEDORA_MAJOR_VERSION }} | jq -r '.Labels["org.opencontainers.image.version"]')
+          echo "VERSION=$ver" >> $GITHUB_OUTPUT
       - name: Generate tags
         id: generate-tags
         shell: bash
         run: |
           # Generate a timestamp for creating an image version history
           TIMESTAMP="$(date +%Y%m%d)"
-          MAJOR_VERSION="${{ env.FEDORA_MAJOR_VERSION }}"
+          MAJOR_VERSION="$(echo ${{ steps.labels.outputs.VERSION }} | cut -d . -f 1)"
           COMMIT_TAGS=()
           BUILD_TAGS=()
           # Have tags for tracking builds during pull request
@@ -90,11 +95,6 @@ jobs:
               echo "${TAG}"
           done
           echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
-      - name: Get current version
-        id: labels
-        run: |
-          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_REGISTRY }}/${{ matrix.image_variant }}-${{ matrix.image_flavor }}:${{ matrix.major_version }} | jq -r '.Labels["org.opencontainers.image.version"]')
-          echo "VERSION=$ver" >> $GITHUB_OUTPUT
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
       - name: Lowercase Registry
