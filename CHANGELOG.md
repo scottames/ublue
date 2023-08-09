@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/scottames/ublue/compare/v1.1.0...v1.1.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* merge from template - always get version tags ([7efe678](https://github.com/scottames/ublue/commit/7efe678d32f003b55b996bb8fdf3ae41a8869423))
+
 ## [1.1.0](https://github.com/scottames/ublue/compare/v1.0.0...v1.1.0) (2023-08-09)
 
 
