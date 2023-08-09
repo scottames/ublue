@@ -2,7 +2,7 @@
 
 [![build-ublue](https://github.com/scottames/ublue/actions/workflows/build.yml/badge.svg)](https://github.com/scottames/ublue/actions/workflows/build.yml)
 
-[scottames]()' custom Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) powered by [Universal Blue](https://universal-blue.org/).
+[scottames](https://github.com/scottames)' custom Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) powered by [Universal Blue](https://universal-blue.org/).
 
 Multiple images are built, ublue being the default Silverblue. See [packages](https://github.com/scottames?tab=packages&repo_name=ublue) for image details.
 
@@ -58,7 +58,8 @@ Fetch & rebase
 # Retrieve latest changes from upstream's template.
 git fetch upstream template
 git checkout template
-git merge --ff-only upstream/template
+git rebase upstream/template
+# resolve any conflicts
 git push
 
 # Rebase your own "live" changes onto the latest template.
