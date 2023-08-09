@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/scottames/ublue/compare/v1.0.0...v1.1.0) (2023-08-09)
+
+
+### Features
+
+* add ublue logo to yafti ([9c01f9e](https://github.com/scottames/ublue/commit/9c01f9e3548e3b1c17b2e60f264e574956bd6b3a))
+
 ## 1.0.0 (2023-08-06)
 
 
