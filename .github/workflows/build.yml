@@ -60,7 +60,7 @@ jobs:
       - name: Get current version
         id: labels
         run: |
-          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_URL }}:${{ env.FEDORA_MAJOR_VERSION }} | jq -r '.Labels["org.opencontainers.image.version"]')
+          ver=$(skopeo inspect docker://${{ env.BASE_IMAGE_REGISTRY }}/${{ matrix.image_variant }}-${{ matrix.image_flavor }}:${{ matrix.major_version }} | jq -r '.Labels["org.opencontainers.image.version"]')
           echo "VERSION=$ver" >> $GITHUB_OUTPUT
       - name: Generate tags
         id: generate-tags
