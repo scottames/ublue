@@ -1,7 +1,7 @@
 name: build-ublue
 on:
   schedule:
-    - cron: "22 15 * * Wed"
+    - cron: "30 23 * * Wed"
     - cron: "00 7 * * Sun"
   push:
     branches:
