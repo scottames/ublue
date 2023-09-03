@@ -16,6 +16,7 @@ rpm:
   install:
     - 1password
     - 1password-cli
+    - arm-image-installer
     - fish
     - google-droid-sans-fonts
     - google-noto-fonts-common
