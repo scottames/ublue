@@ -113,7 +113,7 @@ jobs:
         with:
           string: ${{ env.IMAGE_NAME }}
       - name: Image Metadata
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         id: meta
         with:
           images: |
