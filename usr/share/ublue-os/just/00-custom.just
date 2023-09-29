@@ -1,5 +1,3 @@
-!include /usr/share/ublue-os/just/bling.just
-
 # assemble and replace distroboxes from ${HOME}/.config/distrobox/assemble.ini
 # https://github.com/89luca89/distrobox/blob/main/docs/usage/distrobox-assemble.md
 assemble:
