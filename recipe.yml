@@ -12,6 +12,7 @@ rpm:
   # A list of .repo files that aren't in the COPR, added by scripts/pre/proprietaryrepos.sh
   repo-files:
     - https://raw.githubusercontent.com/scottames/ublue/live/repos/1password.repo
+    - https://raw.githubusercontent.com/scottames/ublue/live/repos/tailscale.repo
     - https://repo.vivaldi.com/stable/vivaldi-fedora.repo
   install:
     - 1password
@@ -36,6 +37,7 @@ rpm:
     - netcat
     - pulseaudio-utils
     - python3-pip # needed by Yafti
+    - tailscale
     - yubico-piv-tool-devel
     - yubikey-manager
     - yubikey-manager-qt

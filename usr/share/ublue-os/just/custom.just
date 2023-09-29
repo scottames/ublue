@@ -24,6 +24,10 @@ flatpaks:
       flatpak install --user --noninteractive flathub "${pkg}"; \
   done
 
+# enable tailscale
+tailscale-enable:
+  sudo systemctl enable tailscaled.service
+
 # run yafti
 yafti:
   yafti /usr/share/ublue-os/firstboot/yafti.yml
