@@ -18,6 +18,7 @@ rpm:
     - 1password
     - 1password-cli
     - arm-image-installer
+    - firewall-config
     - fish
     - google-droid-sans-fonts
     - google-noto-fonts-common
