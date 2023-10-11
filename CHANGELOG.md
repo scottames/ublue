@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/scottames/ublue/compare/v1.1.1...v1.2.0) (2023-10-11)
+
+
+### Features
+
+* **pkg:** add arm-image-installer ([6500ba0](https://github.com/scottames/ublue/commit/6500ba09d9ca3d62de5798e7ec71388d7c235c32))
+* **pkg:** add firewall-config ([eeb24d0](https://github.com/scottames/ublue/commit/eeb24d061fe2d418ec5e48739f7f3cf5b0eaace5))
+* tailscale ([765f792](https://github.com/scottames/ublue/commit/765f792944732aab46c31fc55790e72f8e7537c4))
+
+
+### Bug Fixes
+
+* **just:** custom.just not rely on bling ([51a9c14](https://github.com/scottames/ublue/commit/51a9c14fa96469ee71dd37d7fb03f7ffc889372c))
+
 ## [1.1.1](https://github.com/scottames/ublue/compare/v1.1.0...v1.1.1) (2023-08-09)
 
 
