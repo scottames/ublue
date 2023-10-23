@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - live
     paths:
       - 'boot_menu.yml'
       - '.github/workflows/release-iso.yml'
