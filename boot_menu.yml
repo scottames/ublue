@@ -1,5 +1,8 @@
 ublue_variants:
-  - label: ublue-os/startingpoint
+  - label: scottames/ublue
     ks: /kickstart/ublue-os.ks
     flavors:
-      - label: startingpoint
+      - label: ublue
+        info: Universal Blue Silverblue
+      - label: ublue-nvidia
+        info: Universal Blue Silverblue w/ Nvidia

@@ -1,0 +1,48 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:base',
+    ':semanticCommitTypeAll(chore)',
+    ':preserveSemverRanges',
+  ],
+  repositories: [
+    'scottames/ublue'
+  ],
+  automergeStrategy: 'squash',
+  dependencyDashboard: true,
+  labels: [
+    'dependencies'
+  ],
+  onboarding: false,
+  onboardingPrTitle: 'chore(deps): onboard with renovate',
+  platform: "github",
+  platformAutomerge: true,
+  pruneStaleBranches: true,
+  rebaseWhen: 'behind-base-branch',
+  schedule: 'after 4pm on friday',
+  semanticCommitScope: 'deps',
+  semanticCommitType: 'chore',
+  semanticCommits: 'enabled',
+  timezone: "America/Los_Angeles",
+  docker: {
+    enabled: true,
+    commitMessageTopic: '⇡ 📦 container {{depName}}'
+  },
+  vulnerabilityAlerts: {
+    enabled: true,
+    labels: [
+      'security'
+    ]
+  },
+  packageRules: [
+    {
+      matchFiles: [
+        '.github'
+      ],
+      groupName: 'github-actions',
+      automerge: true,
+      commitMessageTopic: '⇡ github actions {{depName}}',
+      matchUpdateTypes: ['minor', 'patch']
+    },
+  ]
+}
