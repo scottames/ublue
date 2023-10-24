@@ -1,0 +1,7 @@
+type: script
+scripts:
+  - 1Password.sh
+  # this sets up the proper policy & signing files for signed images to work
+  - signing.sh
+  - update-ca-trust.sh
+  - vivaldi.sh
