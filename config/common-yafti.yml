@@ -1,0 +1,12 @@
+type: yafti
+custom-flatpaks:
+  - Pods: com.github.marhkb.Pods
+  - Chrome: com.google.Chrome
+  - BlackBox: com.raggesilver.BlackBox
+  - Celluloid: io.github.celluloid_player.Celluloid
+  - Obsidian: md.obsidian.Obsidian
+  - Flameshot: org.flameshot.Flameshot
+  - GIMP: org.gimp.GIMP
+  - Krita: org.kde.krita
+  - Wezterm: org.wezfurlong.wezterm
+  - Zoom: us.zoom.Zoom
