@@ -3,8 +3,9 @@ on:
     branches:
       - live
     paths:
-      - "boot_menu.yml"
-      - ".github/workflows/release-iso.yml"
+      - 'boot_menu.yml'
+      - '.github/workflows/release-iso.yml'
+      - 'CHANGELOG.md'
   workflow_dispatch:
 name: release-iso
 jobs:
