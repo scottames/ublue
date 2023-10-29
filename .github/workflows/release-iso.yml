@@ -34,7 +34,7 @@ jobs:
     permissions:
       contents: write
     container: 
-      image: fedora:38
+      image: fedora:40
       options: --privileged
     steps:
       - uses: actions/checkout@v4
