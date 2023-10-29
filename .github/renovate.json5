@@ -44,5 +44,12 @@
       commitMessageTopic: '⇡ github actions {{depName}}',
       matchUpdateTypes: ['minor', 'patch']
     },
+    {
+      "packageNames": ["fedora"],
+      "enabled": false,
+      "groupName": "docker-fedora",
+      "matchUpdateTypes": ["container"],
+      "matchDatasources": ["docker"],
+    }
   ]
 }
