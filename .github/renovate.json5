@@ -44,5 +44,10 @@
       commitMessageTopic: '⇡ github actions {{depName}}',
       matchUpdateTypes: ['minor', 'patch']
     },
+    {
+      "matchPackagePatterns": ["fedora"],
+      "matchManagers": ["github-actions"],
+      "enabled": false
+    }
   ]
 }
