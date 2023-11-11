@@ -34,6 +34,9 @@
       'security'
     ]
   },
+  ignorePaths: [
+    "Containerfile" // manually manage IMAGE_MAJOR_VERSION
+  ],
   packageRules: [
     {
       matchFiles: [
