@@ -3,42 +3,22 @@ on:
     branches:
       - live
     paths:
-      - 'boot_menu.yml'
-      - '.github/workflows/release-iso.yml'
-      - 'CHANGELOG.md'
+      - "boot_menu.yml"
+      - ".github/workflows/release-iso.yml"
   workflow_dispatch:
-
 name: release
 jobs:
-  release-please:
-    permissions:
-      contents: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    outputs:
-      releases_created: ${{ steps.release-please.outputs.releases_created }}
-      tag: ${{ steps.release-please.outputs.tag_name }}
-      upload_url: ${{ steps.release-please.outputs.upload_url }}
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        id: release-please
-        with:
-          release-type: node
-          package-name: release-please-action
-          token: ${{secrets.GITHUB_TOKEN}}
-          default-branch: live
-
   release-iso:
     name: Generate and Release ISOs
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    container: 
+    container:
       image: fedora:39
       options: --privileged
     steps:
       - uses: actions/checkout@v4
-      - name: Generate ISO  
+      - name: Generate ISO
         uses: ublue-os/isogenerator@v2.2.0
         id: isogenerator
         with:
@@ -63,5 +43,4 @@ jobs:
       - name: Upload SHA256SUM
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run:
-          gh release upload auto-iso ${{ steps.isogenerator.outputs.sha256sum-path }} -R ${{ github.repository_owner }}/${{ github.event.repository.name }} --clobber
+        run: gh release upload auto-iso ${{ steps.isogenerator.outputs.sha256sum-path }} -R ${{ github.repository_owner }}/${{ github.event.repository.name }} --clobber
