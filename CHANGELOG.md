@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/scottames/ublue/compare/v2.0.0...v2.1.0) (2023-11-11)
+
+
+### Features
+
+* bump nvidia recipe to fedora 39 ([1df5a48](https://github.com/scottames/ublue/commit/1df5a488070d10b541a89c23533b66600f95d91c))
+
+
+### Miscellaneous Chores
+
+* release 2.1.0 (Fedora 39) ([ebd9a7c](https://github.com/scottames/ublue/commit/ebd9a7cbb8d3857eeba0bcba8bcfe7a191d338b4))
+
 ## 2.0.0 (2023-10-25)
 
 
