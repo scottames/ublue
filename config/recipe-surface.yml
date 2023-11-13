@@ -1,0 +1,17 @@
+name: ublue-surface
+description: scottames' custom Fedora Silverblue native container image powered by Universal Blue for surface.
+base-image: ghcr.io/ublue-os/silverblue-surface
+image-version: 39
+modules:
+  - from-file: common-packages.yml
+  - from-file: common-scripts-post-packages.yml
+  - from-file: common-fonts.yml
+  - type: files
+    files:
+      - usr: /usr
+  - type: bling
+    install:
+      - justfiles
+      - ublue-update # https://github.com/ublue-os/ublue-update
+      - dconf-update-service
+  - from-file: common-yafti.yml
