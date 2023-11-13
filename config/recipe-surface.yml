@@ -3,6 +3,15 @@ description: scottames' custom Fedora Silverblue native container image powered 
 base-image: ghcr.io/ublue-os/silverblue-surface
 image-version: 39
 modules:
+  - type: rpm-ostree
+    install:
+      # Camera support
+      - libcamera
+      - libcamera-tools
+      - libcamera-qcam
+      - libcamera-gstreamer
+      - libcamera-ipa
+      - pipewire-plugin-libcamera
   - from-file: common-packages.yml
   - from-file: common-scripts-post-packages.yml
   - from-file: common-fonts.yml
