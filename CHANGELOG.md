@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0](https://github.com/scottames/ublue/compare/v2.1.0...v2.2.0) (2023-11-13)
+
+
+### Features
+
+* add surface image ([1bc2cfd](https://github.com/scottames/ublue/commit/1bc2cfd337350ffef4e5e6b0f258f156ee04466f))
+* **surface:** add pkgs for camera support ([dbf4021](https://github.com/scottames/ublue/commit/dbf4021d988117503ca7378ae161cb90ac725ee1))
+
 ## [2.1.0](https://github.com/scottames/ublue/compare/v2.0.0...v2.1.0) (2023-11-11)
 
 
