@@ -49,6 +49,11 @@ install:
   - qemu-device-usb-redirect
   - qemu-device-display-virtio-vga
   - qemu-device-display-virtio-gpu
+  # zsa voyager
+  - gtk3
+  - webkit2gtk3
+  - webkit2gtk4.0
+  - libusb
 optfix:
   - 1Password
   - vivaldi
