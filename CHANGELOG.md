@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.0](https://github.com/scottames/ublue/compare/v2.2.0...v2.3.0) (2023-11-28)
+
+
+### Features
+
+* pkgs for zsa voyager (keymapp) ([7faf37a](https://github.com/scottames/ublue/commit/7faf37a3809541c9f91f7b9729bbd72f882741eb))
+* **udev:** add udev rules for voyager keyboard ([0868ff2](https://github.com/scottames/ublue/commit/0868ff29e2c1272c1809e24126b652c66a57d648))
+
 ## [2.2.0](https://github.com/scottames/ublue/compare/v2.1.0...v2.2.0) (2023-11-13)
 
 
