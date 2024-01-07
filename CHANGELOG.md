@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.0](https://github.com/scottames/ublue/compare/v2.3.0...v2.4.0) (2024-01-07)
+
+
+### Features
+
+* openrgb udev rules + justfile ([76181dc](https://github.com/scottames/ublue/commit/76181dc8599f3ac638229c328ed47711195f8993))
+* **yafti:** add mangohud ([337e008](https://github.com/scottames/ublue/commit/337e008e13109925b6da6aa601f931a369e16018))
+
 ## [2.3.0](https://github.com/scottames/ublue/compare/v2.2.0...v2.3.0) (2023-12-05)
 
 
