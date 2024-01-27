@@ -20,7 +20,6 @@ modules:
       - usr: /usr
   - type: bling
     install:
-      - justfiles
       - ublue-update # https://github.com/ublue-os/ublue-update
       - dconf-update-service
   - from-file: common-yafti.yml
