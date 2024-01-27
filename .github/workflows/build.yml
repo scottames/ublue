@@ -60,20 +60,20 @@ jobs:
       - uses: sigstore/cosign-installer@v3.3.0
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/live'
 
-      - name: Check SIGNING_SECRET matches cosign.pub
+      - name: Check COSIGN_PRIVATE_KEY matches cosign.pub
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/live'
         env:
           COSIGN_EXPERIMENTAL: false
-          COSIGN_PASSWORD: ""
-          COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
         shell: bash
         run: |
-          echo "Checking for difference between public key from SIGNING_SECRET and cosign.pub"
+          echo "Checking for difference between public key from COSIGN_PRIVATE_KEY and cosign.pub"
           delta=$(diff -u <(cosign public-key --key env://COSIGN_PRIVATE_KEY) cosign.pub)
           if [ -z "$delta" ]; then
-            echo "cosign.pub matches SIGNING_SECRET"
+            echo "cosign.pub matches COSIGN_PRIVATE_KEY"
           else
-            echo "cosign.pub does not match SIGNING_SECRET"
+            echo "cosign.pub does not match COSIGN_PRIVATE_KEY"
             echo "$delta"
             exit 1
           fi
