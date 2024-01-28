@@ -13,47 +13,47 @@ install:
   - google-noto-fonts-common
   - google-roboto-fonts
   - langpacks-en
+  - lm_sensors # required by freon gnome-ext
+  - mozilla-fira-fonts-common
+  - mscore-fonts-all
+  - netcat
+  - pam-u2f
+  - pamu2fcfg
+  - pulseaudio-utils
+  - python3-pip # needed by Yafti
+  - tailscale
+  - vivaldi-stable
+  - wl-clipboard
+  - xclip
+  - yubico-piv-tool-devel
+  - yubikey-manager
+  - yubikey-manager-qt
+  #Virt-manager packages from bluefin-dx
+  - edk2-ovmf
+  - genisoimage
+  - libvirt
+  - qemu
+  - qemu-char-spice
+  - qemu-device-display-virtio-gpu
+  - qemu-device-display-virtio-vga
+  - qemu-device-usb-redirect
+  - qemu-img
+  - qemu-system-x86-core
+  - qemu-user-binfmt
+  - virt-manager
   # GNOME's GTK4 theme, Libadwaita. Already included in Silverblue, but not
   # other spins. You can remove if you aren't using yafti, but many native
   # apps and binaries require it, so it's a good idea to always include it
   # if you ever download or compile any custom software on your machine.
   - libadwaita
+  # zsa voyager
+  - gtk3
+  - libusb
+  - webkit2gtk3
+  - webkit2gtk4.0
   # https://github.com/oae/gnome-shell-pano
   - libgda
   - libgda-sqlite
-  - lm_sensors # required by freon gnome-ext
-  - mozilla-fira-fonts-common
-  - mscore-fonts-all
-  - netcat
-  - pulseaudio-utils
-  - python3-pip # needed by Yafti
-  - tailscale
-  - yubico-piv-tool-devel
-  - yubikey-manager
-  - yubikey-manager-qt
-  - vivaldi-stable
-  - wl-clipboard
-  - xclip
-  - pam-u2f
-  - pamu2fcfg
-  #Virt-manager packages from bluefin-dx
-  - qemu
-  - qemu-user-binfmt
-  - virt-manager
-  - libvirt
-  - edk2-ovmf
-  - genisoimage
-  - qemu-img
-  - qemu-system-x86-core
-  - qemu-char-spice
-  - qemu-device-usb-redirect
-  - qemu-device-display-virtio-vga
-  - qemu-device-display-virtio-gpu
-  # zsa voyager
-  - gtk3
-  - webkit2gtk3
-  - webkit2gtk4.0
-  - libusb
 optfix:
   - 1Password
   - vivaldi
