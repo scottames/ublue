@@ -1,5 +1,38 @@
 # Changelog
 
+## [2.1.0](https://github.com/scottames/ublue/compare/v2.3.0...v2.1.0) (2024-02-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* rewrite based on startingpoint module system
+
+### Features
+
+* Add akmods module ([#212](https://github.com/scottames/ublue/issues/212)) ([df4f330](https://github.com/scottames/ublue/commit/df4f3301ae1f8ef7da1a8970895680b64e014866))
+* Bump ISO generator to v2.3.0 ([#221](https://github.com/scottames/ublue/issues/221)) ([80b3ac0](https://github.com/scottames/ublue/commit/80b3ac0ffdf8624086ea95ce7a1181a1bc5f08ce))
+* Check that cosign.pub matches private key ([#193](https://github.com/scottames/ublue/issues/193)) ([d124a99](https://github.com/scottames/ublue/commit/d124a99d38549f8aaa0d4722f69f9a40dbd43ca5))
+* **ci:** Verify base image with cosign before building ([#211](https://github.com/scottames/ublue/issues/211)) ([52e6a45](https://github.com/scottames/ublue/commit/52e6a456ad47d52ccd45b10a5164e8d6359b725a))
+* openrgb udev rules + justfile ([76181dc](https://github.com/scottames/ublue/commit/76181dc8599f3ac638229c328ed47711195f8993))
+* **packages:** add pipx ([1b7e2d1](https://github.com/scottames/ublue/commit/1b7e2d1e431bfa457c15ab9b3d1532f1b56bfaac))
+* rewrite based on startingpoint module system ([576e3e4](https://github.com/scottames/ublue/commit/576e3e4f7768985d026425303a8b99ccd5735d0a))
+* **yafti:** add mangohud ([337e008](https://github.com/scottames/ublue/commit/337e008e13109925b6da6aa601f931a369e16018))
+
+
+### Bug Fixes
+
+* add single quotes for paths ([f35d3c2](https://github.com/scottames/ublue/commit/f35d3c25445c4963e99c35b043d154a68998f971))
+* **build.yml:** cosign check ([7ccbe7f](https://github.com/scottames/ublue/commit/7ccbe7fe65c1a8ed3da1bf365ba78314dfa616e7))
+* disable ublue-update bling module while broken ([9e6863e](https://github.com/scottames/ublue/commit/9e6863ef0d919afe47df92b022ec9688e72a7454))
+* do not format just files in CI ([#205](https://github.com/scottames/ublue/issues/205)) ([f432ff4](https://github.com/scottames/ublue/commit/f432ff4accc5a30eea7b31912aaafa9942b62f7e))
+* release-iso.yml to not fail if no images are returned ([#202](https://github.com/scottames/ublue/issues/202)) ([525412f](https://github.com/scottames/ublue/commit/525412fcf254a4251a47f3e32390e51066658f0c))
+* remove bling justfiles module (removed upstream) ([829dabf](https://github.com/scottames/ublue/commit/829dabfa371951d6da5230fbfe9639dc60f4896c))
+
+
+### Miscellaneous Chores
+
+* release 2.1.0 (Fedora 39) ([3e5fea8](https://github.com/scottames/ublue/commit/3e5fea8efd7b32121bfe5c2807c3566cc9fa9d0f))
+
 ## [2.3.0](https://github.com/scottames/ublue/compare/v2.2.0...v2.3.0) (2023-12-05)
 
 
