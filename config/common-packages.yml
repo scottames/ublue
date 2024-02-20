@@ -23,7 +23,7 @@ install:
   - pulseaudio-utils
   - python3-pip # needed by Yafti
   - tailscale
-  - vivaldi-stable
+  # - vivaldi-stable
   - wl-clipboard
   - xclip
   - yubico-piv-tool-devel
