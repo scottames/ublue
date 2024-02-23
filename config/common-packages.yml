@@ -3,6 +3,7 @@ repos:
   - https://raw.githubusercontent.com/scottames/ublue/live/config/repos/1password.repo
   - https://raw.githubusercontent.com/scottames/ublue/live/config/repos/tailscale.repo
   - https://repo.vivaldi.com/stable/vivaldi-fedora.repo
+  - https://repository.mullvad.net/rpm/stable/mullvad.repo
 install:
   - 1password
   - 1password-cli
@@ -16,6 +17,7 @@ install:
   - lm_sensors # required by freon gnome-ext
   - mozilla-fira-fonts-common
   - mscore-fonts-all
+  - mullvad-vpn
   - netcat
   - pam-u2f
   - pamu2fcfg
