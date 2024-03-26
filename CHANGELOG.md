@@ -1,5 +1,51 @@
 # Changelog
 
+## [2.1.0](https://github.com/scottames/ublue/compare/v2.1.0...v2.1.0) (2024-03-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* rewrite based on startingpoint module system
+
+### Features
+
+* Add akmods module ([#212](https://github.com/scottames/ublue/issues/212)) ([df4f330](https://github.com/scottames/ublue/commit/df4f3301ae1f8ef7da1a8970895680b64e014866))
+* add just syntax checker ([#194](https://github.com/scottames/ublue/issues/194)) ([9b3db9c](https://github.com/scottames/ublue/commit/9b3db9c3ac3f4615ada73f027e252ec746bce5cb))
+* add pscs custom rules for gpg + yubikeys ([749ac99](https://github.com/scottames/ublue/commit/749ac99c42c4f5ba3f145e119dd4c356e7c45708))
+* add surface image ([1bc2cfd](https://github.com/scottames/ublue/commit/1bc2cfd337350ffef4e5e6b0f258f156ee04466f))
+* Bump ISO generator to v2.3.0 ([#221](https://github.com/scottames/ublue/issues/221)) ([80b3ac0](https://github.com/scottames/ublue/commit/80b3ac0ffdf8624086ea95ce7a1181a1bc5f08ce))
+* Check that cosign.pub matches private key ([#193](https://github.com/scottames/ublue/issues/193)) ([d124a99](https://github.com/scottames/ublue/commit/d124a99d38549f8aaa0d4722f69f9a40dbd43ca5))
+* **ci:** Verify base image with cosign before building ([#211](https://github.com/scottames/ublue/issues/211)) ([52e6a45](https://github.com/scottames/ublue/commit/52e6a456ad47d52ccd45b10a5164e8d6359b725a))
+* delete all previous ISOs when re-releasing ([#185](https://github.com/scottames/ublue/issues/185)) ([a5b47ac](https://github.com/scottames/ublue/commit/a5b47ac3061384e8b9896458be820ef5527f6668))
+* openrgb udev rules + justfile ([76181dc](https://github.com/scottames/ublue/commit/76181dc8599f3ac638229c328ed47711195f8993))
+* **packages:** add pipx ([1b7e2d1](https://github.com/scottames/ublue/commit/1b7e2d1e431bfa457c15ab9b3d1532f1b56bfaac))
+* **pkg:** google emoji fonts ([978511a](https://github.com/scottames/ublue/commit/978511a22f6992eb18365bbba4ff3ab72ff24178))
+* pkgs for zsa voyager (keymapp) ([7faf37a](https://github.com/scottames/ublue/commit/7faf37a3809541c9f91f7b9729bbd72f882741eb))
+* **pkgs:** add mullvad ([1b7a390](https://github.com/scottames/ublue/commit/1b7a39032e2b642d271dbcd52902f3d75eb0a7c8))
+* rewrite based on startingpoint module system ([576e3e4](https://github.com/scottames/ublue/commit/576e3e4f7768985d026425303a8b99ccd5735d0a))
+* **surface:** add pkgs for camera support ([dbf4021](https://github.com/scottames/ublue/commit/dbf4021d988117503ca7378ae161cb90ac725ee1))
+* **udev:** add udev rules for voyager keyboard ([0868ff2](https://github.com/scottames/ublue/commit/0868ff29e2c1272c1809e24126b652c66a57d648))
+* **yafti:** add mangohud ([337e008](https://github.com/scottames/ublue/commit/337e008e13109925b6da6aa601f931a369e16018))
+
+
+### Bug Fixes
+
+* **1Password:** KeyringHelper no longer present in 8.10.28 build ([7c6f507](https://github.com/scottames/ublue/commit/7c6f50786d8f8be6d05cfc4e16ae1338de5acf2a))
+* add single quotes for paths ([f35d3c2](https://github.com/scottames/ublue/commit/f35d3c25445c4963e99c35b043d154a68998f971))
+* **build.yml:** cosign check ([7ccbe7f](https://github.com/scottames/ublue/commit/7ccbe7fe65c1a8ed3da1bf365ba78314dfa616e7))
+* disable ublue-update bling module while broken ([9e6863e](https://github.com/scottames/ublue/commit/9e6863ef0d919afe47df92b022ec9688e72a7454))
+* do not format just files in CI ([#205](https://github.com/scottames/ublue/issues/205)) ([f432ff4](https://github.com/scottames/ublue/commit/f432ff4accc5a30eea7b31912aaafa9942b62f7e))
+* polkit rules in usr/etc not etc ([b3d9fa3](https://github.com/scottames/ublue/commit/b3d9fa3da4a583745aac6adcdae255e980e7d659))
+* release-iso.yml to not fail if no images are returned ([#202](https://github.com/scottames/ublue/issues/202)) ([525412f](https://github.com/scottames/ublue/commit/525412fcf254a4251a47f3e32390e51066658f0c))
+* remove bling justfiles module (removed upstream) ([829dabf](https://github.com/scottames/ublue/commit/829dabfa371951d6da5230fbfe9639dc60f4896c))
+* typo ([#199](https://github.com/scottames/ublue/issues/199)) ([d0af9ce](https://github.com/scottames/ublue/commit/d0af9ce748267b854a9d6ae524285ef40322c0da))
+* use -R flag to select repo on iso-deleting `gh` commands ([9000df9](https://github.com/scottames/ublue/commit/9000df92242b96dcf1754541584c429ef7dd68f0))
+
+
+### Miscellaneous Chores
+
+* release 2.1.0 (Fedora 39) ([3e5fea8](https://github.com/scottames/ublue/commit/3e5fea8efd7b32121bfe5c2807c3566cc9fa9d0f))
+
 ## [2.1.0](https://github.com/scottames/ublue/compare/v2.3.0...v2.1.0) (2024-02-03)
 
 
