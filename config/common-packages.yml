@@ -1,3 +1,4 @@
+---
 type: rpm-ostree
 repos:
   - https://raw.githubusercontent.com/scottames/ublue/live/config/repos/1password.repo
@@ -11,10 +12,12 @@ install:
   - firewall-config
   - fish
   - google-droid-sans-fonts
+  - google-noto-color-emoji-fonts
+  - google-noto-emoji-fonts
   - google-noto-fonts-common
   - google-roboto-fonts
   - langpacks-en
-  - lm_sensors # required by freon gnome-ext
+  - lm_sensors  # required by freon gnome-ext
   - mozilla-fira-fonts-common
   - mscore-fonts-all
   - mullvad-vpn
@@ -23,7 +26,7 @@ install:
   - pamu2fcfg
   - pipx
   - pulseaudio-utils
-  - python3-pip # needed by Yafti
+  - python3-pip  # needed by Yafti
   - tailscale
   # - vivaldi-stable
   - wl-clipboard
