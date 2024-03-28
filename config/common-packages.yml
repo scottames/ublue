@@ -22,6 +22,7 @@ install:
   - mscore-fonts-all
   - mullvad-vpn
   - netcat
+  - open-sans-fonts
   - pam-u2f
   - pamu2fcfg
   - pipx

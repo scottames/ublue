@@ -1,3 +1,4 @@
+---
 type: fonts
 fonts:
   nerd-fonts:
@@ -7,6 +8,3 @@ fonts:
     - Terminus
     - JetBrainsMono
     - NerdFontsSymbolsOnly
-  google-fonts:
-    - Roboto
-    - Open Sans
