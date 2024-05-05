@@ -1,3 +1,4 @@
+---
 type: script
 scripts:
   - 1Password.sh
@@ -5,3 +6,4 @@ scripts:
   - signing.sh
   - update-ca-trust.sh
   - vivaldi.sh
+  - wezterm.sh
