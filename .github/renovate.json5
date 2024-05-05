@@ -5,17 +5,11 @@
     ':semanticCommitTypeAll(chore)',
     ':preserveSemverRanges',
   ],
-  repositories: [
-    'scottames/ublue'
-  ],
   automergeStrategy: 'squash',
   dependencyDashboard: true,
   labels: [
     'dependencies'
   ],
-  onboarding: false,
-  onboardingPrTitle: 'chore(deps): onboard with renovate',
-  platform: "github",
   platformAutomerge: true,
   pruneStaleBranches: true,
   rebaseWhen: 'behind-base-branch',
@@ -37,6 +31,16 @@
   ignorePaths: [
     "Containerfile" // manually manage IMAGE_MAJOR_VERSION
   ],
+  regexManagers: [
+    {
+      "fileMatch": [
+        "config/scripts/wezterm.sh"
+      ],
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n.*?_RELEASE=\"(?<currentValue>.+)\""
+      ],
+    },
+  ],
   packageRules: [
     {
       matchFiles: [
@@ -51,14 +55,6 @@
       "matchPackagePatterns": ["fedora"],
       "matchManagers": ["github-actions"],
       "enabled": false
-    },
-    {
-      "fileMatch": [
-        "config/scripts/wezterm.sh"
-      ],
-      "matchStrings": [
-        '# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n.*?[vV][eE][rR][sS][iI][oO][nN]=\\"(?<currentValue>.+)\\"'
-      ],
     },
   ]
 }
