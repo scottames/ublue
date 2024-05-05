@@ -51,6 +51,14 @@
       "matchPackagePatterns": ["fedora"],
       "matchManagers": ["github-actions"],
       "enabled": false
-    }
+    },
+    {
+      "fileMatch": [
+        "config/scripts/wezterm.sh"
+      ],
+      "matchStrings": [
+        '# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n.*?[vV][eE][rR][sS][iI][oO][nN]=\\"(?<currentValue>.+)\\"'
+      ],
+    },
   ]
 }
