@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v3
+        uses: AdityaGarg8/remove-unwanted-software@v4
         with:
           remove-dotnet: 'true'
           remove-android: 'true'
@@ -171,7 +171,7 @@ jobs:
           string: ${{ env.IMAGE_NAME }}
 
       - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v3
+        uses: AdityaGarg8/remove-unwanted-software@v4
         with:
           remove-dotnet: 'true'
           remove-android: 'true'
