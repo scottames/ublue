@@ -5,16 +5,7 @@
 
 
 name: build-ublue
-on: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
-  schedule:
-    - cron: "30 16 * * *"
-  push:
-    branches:
-      - live
-      - template
-      - main
-    paths-ignore: # don't rebuild if only documentation has changed
-      - "**.md"
+on:
   pull_request:
   workflow_dispatch:
 
@@ -39,8 +30,6 @@ jobs:
         # Add recipes for all the images you want to build here.
         # Don't add module configuration files, you will get errors.
         recipe:
-          - recipe-39.yml
-          - recipe-nvidia-39.yml
           - recipe-40.yml
           - recipe-nvidia-40.yml
 # !!!

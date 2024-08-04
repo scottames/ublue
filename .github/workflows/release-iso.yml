@@ -1,10 +1,4 @@
 on:
-  push:
-    branches:
-      - live
-    paths:
-      - "boot_menu.yml"
-      - ".github/workflows/release-iso.yml"
   workflow_dispatch:
 name: release-iso
 jobs:
@@ -18,7 +12,7 @@ jobs:
       options: --privileged
     steps:
       - uses: actions/checkout@v4
-      - name: Generate ISO  
+      - name: Generate ISO
         uses: ublue-os/isogenerator@v2.3.1
         id: isogenerator
         with:

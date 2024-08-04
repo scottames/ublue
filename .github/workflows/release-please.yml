@@ -1,7 +1,4 @@
 on:
-  push:
-    branches:
-      - live
   workflow_dispatch:
 name: release-please
 jobs:

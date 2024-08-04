@@ -2,6 +2,10 @@
 
 [![build-ublue](https://github.com/scottames/ublue/actions/workflows/build.yml/badge.svg)](https://github.com/scottames/ublue/actions/workflows/build.yml)
 
+> [!WARNING]
+> Deprecated by [containers](https://github.com/scottames/containers),
+> primarily [containers/atomic](https://github.com/scottames/containers/tree/main/atomic)
+
 [scottames](https://github.com/scottames)' custom Fedora Silverblue [native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) powered by [Universal Blue](https://universal-blue.org/).
 
 Multiple images are built, ublue being the default Silverblue. See [packages](https://github.com/scottames?tab=packages&repo_name=ublue) for image details.
